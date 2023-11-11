@@ -1,42 +1,48 @@
-import ContactList from './ContactList/ContactList';
-import Filter from './Filter/Filter';
-import ContactForm from './ContactForm/ContactForm';
-import { ContainerDiv } from './App.styled';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
-import { useEffect } from 'react';
-import { fetchCotacts } from 'redux/operations';
+import React, { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from 'pages/HomePage';
+import LoginPage from 'pages/LoginPage';
+import RegPage from 'pages/RegPage';
+import Layout from './Layout';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks';
+import { refreshUser } from 'redux/auth/operations';
 
 const App = () => {
   const dispatch = useDispatch();
-  const { items, isLoading, error } = useSelector(selectContacts);
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchCotacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
-    <ContainerDiv>
-      <h1>Phonebook</h1>
-      <ContactForm />
-
-      <div>
-        <h2>Contacts</h2>
-        {isLoading ? (
-          <p>Loading Contacts.....</p>
-        ) : (
-          <div>
-            {items.length > 0 && (
-              <div>
-                <Filter />
-                <ContactList />
-              </div>
-            )}
-          </div>
-        )}
-        {error && <p>{error}</p>}
-      </div>
-    </ContainerDiv>
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route
+            index
+            element={
+              <PrivateRoute redirectTo="/loginPage" component={<HomePage />} />
+            }
+          />
+          <Route
+            path="/loginPage"
+            element={
+              <RestrictedRoute redirectTo="/" component={<LoginPage />} />
+            }
+          />
+          <Route
+            path="/registration"
+            element={<RestrictedRoute redirectTo="/" component={<RegPage />} />}
+          />
+        </Route>
+      </Routes>
+    </>
   );
 };
 

@@ -22,7 +22,7 @@ const ContactForm = () => {
     const contact = {
       id: nanoid(),
       name: name,
-      phone: number,
+      number: number,
     };
 
     dispatch(addContact(contact));
