@@ -1,3 +1,4 @@
+import { Button } from 'react-bootstrap';
 import { LiItem } from './ContactList.styled';
 
 const ContactListItem = ({ id, name, number, onClick }) => {
@@ -5,9 +6,9 @@ const ContactListItem = ({ id, name, number, onClick }) => {
     <LiItem>
       <span>{name} </span>
       <span> {number} </span>
-      <button type="button" onClick={() => onClick(id)}>
+      <Button type="button" variant="primary" onClick={() => onClick(id)}>
         Delete
-      </button>
+      </Button>
     </LiItem>
   );
 };

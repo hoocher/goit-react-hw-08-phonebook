@@ -1,17 +1,10 @@
 import { styled } from 'styled-components';
 
-export const LiItem = styled('li')(() => {
+export const FilterDiv = styled('div')(() => {
   return {
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '5px',
-  };
-});
-
-export const List = styled('ul')(() => {
-  return {
     width: '400px',
     margin: '0 auto',
-    padding: '0',
   };
 });

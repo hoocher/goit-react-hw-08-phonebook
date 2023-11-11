@@ -1,7 +1,8 @@
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/operations';
 import { InputDiv } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from '@reduxjs/toolkit';
+import { Button } from 'react-bootstrap';
 
 const ContactForm = () => {
   const dispatch = useDispatch();
@@ -53,7 +54,9 @@ const ContactForm = () => {
         />
       </InputDiv>
 
-      <button type="submit">Add contacts</button>
+      <Button variant="primary" type="submit">
+        Add contacts
+      </Button>
     </form>
   );
 };

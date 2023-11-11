@@ -1,15 +1,15 @@
 import { useAuth } from 'hooks';
 import React from 'react';
-import { Button, Stack } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
+import { UserMenuDiv } from './UserMenu.styled';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
-  console.log(user);
   return (
-    <Stack direction="horizontal" gap={2}>
+    <UserMenuDiv>
       <p>{user.email}</p>
       <Button
         variant="primary"
@@ -18,7 +18,7 @@ const UserMenu = () => {
       >
         Logout
       </Button>
-    </Stack>
+    </UserMenuDiv>
   );
 };
 
