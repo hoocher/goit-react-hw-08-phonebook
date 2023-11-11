@@ -10,3 +10,12 @@ export const InputDiv = styled('div')(() => {
     justifyContent: 'space-between',
   };
 });
+
+export const FormDiv = styled('div')(() => {
+  return {
+    border: 'solid gray 2px',
+    borderRadius: '4px',
+    padding: '20px',
+    marginBottom: '20px',
+  };
+});

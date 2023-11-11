@@ -4,7 +4,7 @@ export const LiItem = styled('li')(() => {
   return {
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '5px',
+    margin: '10px',
   };
 });
 

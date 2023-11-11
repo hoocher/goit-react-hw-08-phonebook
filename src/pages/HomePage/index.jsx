@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCotacts } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/selectors';
-import { HomeContainerDiv } from './index.styled';
+import { ContactsDiv, HomeContainerDiv } from './index.styled';
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -28,10 +28,10 @@ const HomePage = () => {
         ) : (
           <div>
             {items.length > 0 && (
-              <div>
+              <ContactsDiv>
                 <Filter />
                 <ContactList />
-              </div>
+              </ContactsDiv>
             )}
           </div>
         )}

@@ -6,7 +6,12 @@ const ContactListItem = ({ id, name, number, onClick }) => {
     <LiItem>
       <span>{name} </span>
       <span> {number} </span>
-      <Button type="button" variant="primary" onClick={() => onClick(id)}>
+      <Button
+        type="button"
+        variant="primary"
+        size="sm"
+        onClick={() => onClick(id)}
+      >
         Delete
       </Button>
     </LiItem>
